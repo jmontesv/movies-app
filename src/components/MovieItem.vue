@@ -1,12 +1,12 @@
 <template>
-  <v-col cols="12" md="4">
+  <v-col>
     <v-hover v-slot="{ hover }">
       <v-card
         style="cursor: pointer"
         :elevation="hover ? 12 : 2"
         :class="{ 'on-hover': hover }"
       >
-        <v-img :src="`https://image.tmdb.org/t/p/w500${image}`" height="300px">
+        <v-img :src="`https://image.tmdb.org/t/p/w300${image}`">
           <v-row style="height: 100%">
             <v-col class="d-flex flex-column justify-space-between">
               <v-card-title class="title white--text">

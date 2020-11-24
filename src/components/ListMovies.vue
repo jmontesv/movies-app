@@ -1,7 +1,7 @@
 <template>
   <div>
-    <v-container class="pa-2 text-center">
-      <v-row class="fill-height" align="center" justify="center">
+    <v-container class="pa-2 text-center flex-column justify-space-between">
+      <v-row align="center" justify="center">
         <MovieItem
           v-for="movie in movies"
           :totalVotes="movie.vote_count"
@@ -11,8 +11,14 @@
           :key="movie.id"
         />
       </v-row>
+      <v-pagination
+        @input="eventInPaginator"
+        v-model="page"
+        :length="info.pages"
+        circle
+      >
+      </v-pagination>
     </v-container>
-    <v-pagination v-model="page" :length="info.pages" circle> </v-pagination>
   </div>
 </template>
 
@@ -31,7 +37,10 @@ export default {
       page: this.info.currentPage,
     };
   },
+  methods: {
+    eventInPaginator(currentNumber) {
+      this.$emit("changePaginationState", currentNumber);
+    },
+  },
 };
 </script>
-
-<style scoped></style>
