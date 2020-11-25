@@ -11,9 +11,10 @@
             solo-inverted
             hide-details="true"
             class="mr-2"
+            @keyup.enter="emitName"
           ></v-text-field>
-          <v-btn @focus="emitName" icon color="black" class="text-center">
-            <v-icon>mdi-play</v-icon>
+          <v-btn @focus="emitName" icon class="text-center">
+            <v-icon color="black">mdi-cloud-search-outline</v-icon>
           </v-btn>
         </v-col>
       </v-row>

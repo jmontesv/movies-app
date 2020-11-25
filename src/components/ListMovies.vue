@@ -1,13 +1,13 @@
 <template>
   <div>
     <v-container class="pa-2 text-center flex-column justify-space-between">
-      <v-row align="center" justify="center">
+      <v-row align="center">
         <MovieItem
           v-for="movie in movies"
           :totalVotes="movie.vote_count"
           :voteAverage="movie.vote_average"
           :title="movie.title"
-          :image="movie.poster_path"
+          :image="checkForPicture(movie.poster_path)"
           :key="movie.id"
         />
       </v-row>
@@ -16,6 +16,7 @@
         v-model="page"
         :length="info.pages"
         circle
+        color="black"
       >
       </v-pagination>
     </v-container>
@@ -24,6 +25,7 @@
 
 <script>
 import MovieItem from "./MovieItem";
+import defaultImage from "../assets/img/default_image_movie.jpg";
 export default {
   components: {
     MovieItem,
@@ -34,13 +36,32 @@ export default {
   },
   data() {
     return {
-      page: this.info.currentPage,
+      page: null,
     };
   },
   methods: {
     eventInPaginator(currentNumber) {
+      this.scrollTop();
       this.$emit("changePaginationState", currentNumber);
     },
+    scrollTop() {
+      window.scroll({
+        top: 100,
+        left: 100,
+        behavior: "smooth",
+      });
+    },
+    checkForPicture(remoteImage) {
+      return remoteImage != null
+        ? "https://image.tmdb.org/t/p/w300" + remoteImage
+        : defaultImage;
+    },
+  },
+  mounted() {
+    this.page = this.info.currentPage;
+  },
+  updated() {
+    this.page = this.info.currentPage;
   },
 };
 </script>
