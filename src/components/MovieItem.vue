@@ -8,10 +8,11 @@
         :elevation="hover ? 12 : 2"
         :class="{ 'on-hover': hover }"
       >
-        <v-img :src="image" height="450px" width="300px">
-          <v-row style="height: 100%">
-            <v-col class="d-flex flex-column-reverse justify-space-between">
-              <!-- <v-card-title class="title white--text">
+        <router-link style="text-decoration: none" :to="'/movies/' + id">
+          <v-img :src="image" height="450px" width="300px">
+            <v-row style="height: 100%">
+              <v-col class="d-flex flex-column-reverse justify-space-between">
+                <!-- <v-card-title class="title white--text">
                 <p class="ml-2 subheading text-left">
                   {{ title }}
                 </p>
@@ -30,28 +31,29 @@
               </div> 
               </v-card-title> -->
 
-              <v-rating
-                class="text-right"
-                v-model="rating"
-                color="yellow darken-3"
-                background-color="grey darken-1"
-                empty-icon="$ratingFull"
-                half-increments
-                small
-                readonly
-                ><p>({{ totalVotes }})</p></v-rating
-              >
-            </v-col>
-          </v-row>
-          <template v-slot:placeholder>
-            <v-row class="fill-height ma-0" align="center" justify="center">
-              <v-progress-circular
-                indeterminate
-                color="grey darken-1"
-              ></v-progress-circular>
+                <v-rating
+                  class="text-right"
+                  v-model="rating"
+                  color="yellow darken-3"
+                  background-color="grey darken-1"
+                  empty-icon="$ratingFull"
+                  half-increments
+                  small
+                  readonly
+                  ><p>({{ totalVotes }})</p></v-rating
+                >
+              </v-col>
             </v-row>
-          </template>
-        </v-img>
+            <template v-slot:placeholder>
+              <v-row class="fill-height ma-0" align="center" justify="center">
+                <v-progress-circular
+                  indeterminate
+                  color="grey darken-1"
+                ></v-progress-circular>
+              </v-row>
+            </template>
+          </v-img>
+        </router-link>
       </v-card>
     </v-hover>
   </v-col>
@@ -59,6 +61,7 @@
 <script>
 export default {
   props: {
+    id: Number,
     voteAverage: Number,
     title: String,
     image: String,

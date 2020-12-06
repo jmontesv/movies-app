@@ -9,3 +9,14 @@ export const getMovies = (name, page = 1) => {
       return err;
     });
 };
+export const getMovie = (id) => {
+  return fetch(
+    `${process.env.VUE_APP_API_URL}/movie/${id}?api_key=${process.env.VUE_APP_API_KEY}`
+  )
+    .then((res) => {
+      return res.json();
+    })
+    .catch((err) => {
+      return err;
+    });
+};

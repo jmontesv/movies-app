@@ -7,6 +7,7 @@
           :totalVotes="movie.vote_count"
           :voteAverage="movie.vote_average"
           :title="movie.title"
+          :id="movie.id"
           :image="checkForPicture(movie.poster_path)"
           :key="movie.id"
         />
@@ -45,9 +46,8 @@ export default {
       this.$emit("changePaginationState", currentNumber);
     },
     scrollTop() {
-      window.scroll({
-        top: 100,
-        left: 100,
+      window.scrollTo({
+        top: 0,
         behavior: "smooth",
       });
     },

@@ -1,9 +1,8 @@
 <template>
   <div>
     <InputSearch @nameToSearch="handleName" />
-    <p v-if="movies.length <= 0">Cargando...</p>
     <ListMovies
-      v-else
+      v-if="movies.length > 0"
       @changePaginationState="getMoviesByName(nameToSearch, $event)"
       :movies="movies"
       :info="info"
@@ -16,6 +15,7 @@ import { getMovies } from "../api/Index";
 import ListMovies from "../components/ListMovies.vue";
 import InputSearch from "../components/InputSearch.vue";
 export default {
+  name: "index",
   data() {
     return {
       nameToSearch: "",
