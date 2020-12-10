@@ -35,7 +35,6 @@ export default {
           this.info["totalResults"] = moviesFounded.total_results;
           this.info["currentPage"] = moviesFounded.page;
           this.info["pages"] = moviesFounded.total_pages;
-          console.log(moviesFounded);
         })
         .catch((err) => {
           console.log(err);

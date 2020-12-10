@@ -1,7 +1,7 @@
 <template>
   <div>
-    <v-container class="pa-2 text-center flex-column justify-space-between">
-      <v-row align="center">
+    <v-container fluid class="pa-2 d-flex flex-column justify-space-between">
+      <v-row class="d-flex flex-row justify-center mb-12">
         <MovieItem
           v-for="movie in movies"
           :totalVotes="movie.vote_count"

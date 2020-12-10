@@ -1,24 +1,51 @@
 <template>
-  <v-container>
+  <v-container v-if="!loading" fluid>
     <v-row>
       <v-col cols="12">
         <v-img
           height="600px"
-          :src="'https://image.tmdb.org/t/p/original' + background"
-          gradient="to top, rgb(0,0,0), transparent"
+          @load="backgroundImageLoaded = true"
+          :src="
+            this.$checkForPicture(
+              background,
+              'https://image.tmdb.org/t/p/original'
+            )
+          "
+          :gradient="gradient"
         >
           <v-container style="height: 100%" class="d-flex flex-column-reverse">
             <h1 class="text-h3 font-weight-black white--text pl-6 pb-2">
               {{ title }}
             </h1>
           </v-container>
+          <template v-slot:placeholder>
+            <v-row class="fill-height ma-0" align="center" justify="center">
+              <v-progress-circular
+                indeterminate
+                color="grey darken-1"
+              ></v-progress-circular>
+            </v-row>
+          </template>
         </v-img>
       </v-col>
     </v-row>
     <v-row class="d-flex justify-center">
       <v-col cols="8" class="d-flex justify-center">
         <v-col cols="4">
-          <v-img :src="'https://image.tmdb.org/t/p/w500' + image"></v-img>
+          <v-img
+            :src="
+              this.$checkForPicture(image, 'https://image.tmdb.org/t/p/w500')
+            "
+          >
+            <template v-slot:placeholder>
+              <v-row class="fill-height ma-0" align="center" justify="center">
+                <v-progress-circular
+                  indeterminate
+                  color="grey darken-1"
+                ></v-progress-circular>
+              </v-row>
+            </template>
+          </v-img>
         </v-col>
         <v-col cols="8">
           <v-row>
@@ -43,6 +70,13 @@
       </v-col>
     </v-row>
   </v-container>
+  <div v-else class="d-flex justify-center align-center" style="height: 100%">
+    <v-progress-circular
+      :size="50"
+      color="grey darken-1"
+      indeterminate
+    ></v-progress-circular>
+  </div>
 </template>
 <script>
 import { getMovie } from "../api/Index";
@@ -50,6 +84,8 @@ export default {
   name: "movie",
   data() {
     return {
+      backgroundImageLoaded: false,
+      loading: true,
       id: null,
       title: "",
       image: "",
@@ -61,7 +97,6 @@ export default {
   mounted() {
     getMovie(this.$route.params.id)
       .then((movieDetail) => {
-        console.log(movieDetail);
         const {
           id,
           title,
@@ -76,10 +111,18 @@ export default {
         this.overview = overview;
         this.background = backdrop_path;
         this.genres = genres;
+        this.loading = false;
       })
       .catch((err) => {
         console.log(err);
       });
+  },
+  computed: {
+    gradient() {
+      return this.backgroundImageLoaded
+        ? "to top, rgb(0, 0, 0), rgba(0, 0, 0, 0.8) 45%, transparent"
+        : undefined;
+    },
   },
 };
 </script>

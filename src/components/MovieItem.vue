@@ -1,10 +1,10 @@
 <template>
-  <v-col>
+  <v-col class="flex-grow-0">
     <v-hover v-slot="{ hover }">
       <v-card
         max-width="300px"
         max-height="450px"
-        style="cursor: pointer, width: 300px"
+        style="cursor: pointer"
         :elevation="hover ? 12 : 2"
         :class="{ 'on-hover': hover }"
       >
@@ -12,7 +12,7 @@
           <v-img :src="image" height="450px" width="300px">
             <v-row style="height: 100%">
               <v-col class="d-flex flex-column-reverse justify-space-between">
-                <!-- <v-card-title class="title white--text">
+                <!-- <v-card-title class="title white--tex  t">
                 <p class="ml-2 subheading text-left">
                   {{ title }}
                 </p>
@@ -40,8 +40,7 @@
                   half-increments
                   small
                   readonly
-                  ><p>({{ totalVotes }})</p></v-rating
-                >
+                ></v-rating>
               </v-col>
             </v-row>
             <template v-slot:placeholder>
