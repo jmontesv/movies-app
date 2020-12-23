@@ -1,21 +1,21 @@
 <template>
   <v-app>
-    <v-container>
-      <v-row class="d-flex">
-        <v-col cols="12">
-          <v-switch
-            class="pr-4"
-            style="width: max-content; margin-left: auto"
-            v-model="$vuetify.theme.dark"
-            inset
-          >
-            <template slot="label">
-              <v-icon>mdi-theme-light-dark</v-icon>
-            </template>
-          </v-switch>
-        </v-col>
-      </v-row>
-    </v-container>
+    <v-app-bar max-height="max-content" style="flex:none">
+      <v-toolbar-title role="button" @click="$router.push('/')"
+        >Movies App</v-toolbar-title
+      >
+      <v-spacer></v-spacer>
+      <v-switch
+        class="pr-4 mt-4"
+        style="width: max-content;"
+        v-model="$vuetify.theme.dark"
+        inset
+      >
+        <template slot="label">
+          <v-icon>mdi-theme-light-dark</v-icon>
+        </template>
+      </v-switch>
+    </v-app-bar>
     <v-main>
       <v-container>
         <transition name="fade" mode="out-in">
