@@ -2,8 +2,16 @@
   <div>
     <v-container id="input-usage" fluid>
       <v-row class="flex-row justify-center">
-        <v-col cols="4" class="d-flex align-center" height="max-content">
+        <v-col
+          cols="12"
+          md="6"
+          lg="6"
+          xl="4"
+          class="d-flex align-center"
+          height="max-content"
+        >
           <v-text-field
+            full-width
             v-model="nameMovie"
             autofocus
             label="Enter the name of movie"

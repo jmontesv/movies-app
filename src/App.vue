@@ -6,7 +6,7 @@
       >
       <v-spacer></v-spacer>
       <v-switch
-        class="pr-4 mt-4"
+        class="mt-4"
         style="width: max-content;"
         v-model="$vuetify.theme.dark"
         inset
@@ -17,13 +17,11 @@
       </v-switch>
     </v-app-bar>
     <v-main>
-      <v-container>
-        <transition name="fade" mode="out-in">
-          <keep-alive include="index">
-            <router-view></router-view>
-          </keep-alive>
-        </transition>
-      </v-container>
+      <transition name="fade" mode="out-in">
+        <keep-alive include="index">
+          <router-view></router-view>
+        </keep-alive>
+      </transition>
     </v-main>
   </v-app>
 </template>

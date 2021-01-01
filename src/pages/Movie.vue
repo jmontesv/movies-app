@@ -30,8 +30,8 @@
       </v-col>
     </v-row>
     <v-row class="d-flex justify-center">
-      <v-col cols="8" class="d-flex justify-center">
-        <v-col cols="4">
+      <v-col cols="12" sm="12" lg="8" class="d-flex flex-wrap justify-center">
+        <v-col cols="12" sm="4" md="4">
           <v-img
             :src="
               this.$checkForPicture(image, 'https://image.tmdb.org/t/p/w500')
@@ -47,7 +47,7 @@
             </template>
           </v-img>
         </v-col>
-        <v-col cols="8">
+        <v-col cols="12" sm="8" md="8">
           <v-row>
             <v-col cols="12">
               <div class="mb-4">
