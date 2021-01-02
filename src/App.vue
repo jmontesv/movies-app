@@ -17,18 +17,21 @@
       </v-switch>
     </v-app-bar>
     <v-main>
+      <InputSearch />
       <transition name="fade" mode="out-in">
-        <keep-alive include="index">
-          <router-view></router-view>
-        </keep-alive>
+        <router-view></router-view>
       </transition>
     </v-main>
   </v-app>
 </template>
 
 <script>
+import InputSearch from "./components/InputSearch.vue";
 export default {
   name: "App",
+  components: {
+    InputSearch,
+  },
 };
 </script>
 <style>

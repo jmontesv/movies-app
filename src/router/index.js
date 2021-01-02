@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Index from "../pages/Index.vue";
 import Movie from "../pages/Movie.vue";
+import Search from "../pages/Search.vue";
 
 Vue.use(VueRouter);
 // Define some routes
@@ -11,6 +12,7 @@ Vue.use(VueRouter);
 const routes = [
   { path: "/", component: Index },
   { path: "/movies/:id", component: Movie },
+  { path: "/search", component: Search },
 ];
 
 // Create the router instance and pass the `routes` option

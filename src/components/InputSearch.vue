@@ -19,9 +19,9 @@
             solo-inverted
             hide-details="true"
             class="mr-2"
-            @keyup.enter="emitName"
+            @keyup.enter="search"
           ></v-text-field>
-          <v-btn @focus="emitName" icon class="text-center">
+          <v-btn @focus="search" icon class="text-center">
             <v-icon color="black">mdi-cloud-search-outline</v-icon>
           </v-btn>
         </v-col>
@@ -36,9 +36,16 @@ export default {
       nameMovie: "",
     };
   },
+  watch: {
+    nameMovie(value) {
+      if (value === "" && this.$route.path !== "/") this.$router.push("/");
+    },
+  },
   methods: {
-    emitName() {
-      this.$emit("nameToSearch", this.nameMovie);
+    search() {
+      this.$route.path !== "/search"
+        ? this.$router.push("/search?text=" + this.nameMovie)
+        : console.log(this.$router);
     },
   },
 };
