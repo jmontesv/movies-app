@@ -5,11 +5,11 @@
         max-width="300px"
         max-height="450px"
         style="cursor: pointer"
-        :elevation="hover ? 12 : 2"
+        :elevation="hover ? 24 : 2"
         :class="{ 'on-hover': hover }"
       >
         <router-link style="text-decoration: none" :to="'/movies/' + id">
-          <v-img :src="image" height="450px" width="300px">
+          <v-img :src="image" :height="height" :width="width">
             <v-row style="height: 100%">
               <v-col class="d-flex flex-column-reverse justify-space-between">
                 <!-- <v-card-title class="title white--tex  t">
@@ -65,6 +65,8 @@ export default {
     title: String,
     image: String,
     totalVotes: Number,
+    height: String,
+    width: String,
   },
   computed: {
     rating() {

@@ -20,3 +20,14 @@ export const getMovie = (id) => {
       return err;
     });
 };
+export const getUpcoming = (page = 1) => {
+  return fetch(
+    `${process.env.VUE_APP_API_URL}/movie/upcoming?api_key=${process.env.VUE_APP_API_KEY}&page=${page}`
+  )
+    .then((res) => {
+      return res.json();
+    })
+    .catch((err) => {
+      return err;
+    });
+};

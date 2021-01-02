@@ -4,6 +4,8 @@
       <v-row class="d-flex flex-row justify-center mb-12">
         <MovieItem
           v-for="movie in movies"
+          :width="'300px'"
+          :height="'450px'"
           :totalVotes="movie.vote_count"
           :voteAverage="movie.vote_average"
           :title="movie.title"
