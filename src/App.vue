@@ -27,8 +27,13 @@
 
 <script>
 import InputSearch from "./components/InputSearch.vue";
+import $searches from "./store/Searches.js";
 export default {
   name: "App",
+  provide: {
+    $searches,
+  },
+  // TODO: Hacer que la vista de búsqueda mantenga el estado y que se actualice cuando haya una nueva busqueda.
   components: {
     InputSearch,
   },

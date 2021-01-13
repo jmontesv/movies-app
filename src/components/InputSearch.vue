@@ -31,6 +31,7 @@
 </template>
 <script>
 export default {
+  inject: ["$searches"],
   data() {
     return {
       nameMovie: "",
@@ -43,9 +44,11 @@ export default {
   },
   methods: {
     search() {
-      this.$route.path !== "/search"
-        ? this.$router.push("/search?text=" + this.nameMovie)
-        : console.log(this.$router);
+      this.$searches.lastMovieSearch = {
+        text: "",
+        page: null,
+      };
+      this.$router.push("/search?text=" + this.nameMovie);
     },
   },
 };

@@ -1,29 +1,29 @@
 <template>
-  <div>
-    <v-container fluid class="pa-2 d-flex flex-column justify-space-between">
-      <v-row class="d-flex flex-row justify-center mb-12">
-        <MovieItem
-          v-for="movie in movies"
-          :width="'300px'"
-          :height="'450px'"
-          :totalVotes="movie.vote_count"
-          :voteAverage="movie.vote_average"
-          :title="movie.title"
-          :id="movie.id"
-          :image="checkForPicture(movie.poster_path)"
-          :key="movie.id"
-        />
-      </v-row>
-      <v-pagination
-        @input="eventInPaginator"
-        v-model="page"
-        :length="info.pages"
-        circle
-        color="black"
-      >
-      </v-pagination>
-    </v-container>
-  </div>
+    <div>
+      <v-container fluid class="pa-2 d-flex flex-column justify-space-between">
+        <v-row class="d-flex flex-row justify-center mb-12">
+          <MovieItem
+            v-for="movie in movies"
+            :width="'300px'"
+            :height="'450px'"
+            :totalVotes="movie.vote_count"
+            :voteAverage="movie.vote_average"
+            :title="movie.title"
+            :id="movie.id"
+            :image="checkForPicture(movie.poster_path)"
+            :key="movie.id"
+          />
+        </v-row>
+        <v-pagination
+          @input="eventInPaginator"
+          v-model="page"
+          :length="info.pages"
+          circle
+          color="black"
+        >
+        </v-pagination>
+      </v-container>
+    </div>
 </template>
 
 <script>
