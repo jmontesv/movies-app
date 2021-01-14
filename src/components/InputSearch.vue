@@ -44,11 +44,13 @@ export default {
   },
   methods: {
     search() {
-      this.$searches.lastMovieSearch = {
-        text: "",
-        page: null,
-      };
-      this.$router.push("/search?text=" + this.nameMovie);
+      if (this.$route.query.text !== this.nameMovie) {
+        this.$searches.lastMovieSearch = {
+          text: "",
+          page: null,
+        };
+        this.$router.push("/search?text=" + this.nameMovie);
+      }
     },
   },
 };

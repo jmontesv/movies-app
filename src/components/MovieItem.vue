@@ -1,61 +1,30 @@
 <template>
-  <v-col class="flex-grow-0">
-    <v-hover v-slot="{ hover }">
-      <v-card
-        max-width="300px"
-        max-height="450px"
-        style="cursor: pointer"
-        :elevation="hover ? 24 : 2"
-        :class="{ 'on-hover': hover }"
-      >
-        <router-link style="text-decoration: none" :to="'/movies/' + id">
-          <v-img :src="image" :height="height" :width="width">
-            <v-row style="height: 100%">
-              <v-col class="d-flex flex-column-reverse justify-space-between">
-                <!-- <v-card-title class="title white--tex  t">
-                <p class="ml-2 subheading text-left">
-                  {{ title }}
-                </p>
-                 <div class="align-self-center">
-                <v-btn
-                  v-for="(icon, index) in icons"
-                  :key="index"
-                  :class="{ 'show-btns': hover }"
-                  color="transparent"
-                  icon
-                >
-                  <v-icon :class="{ 'show-btns': hover }" color="transparent">
-                    {{ icon }}
-                  </v-icon>
-                </v-btn>
-              </div> 
-              </v-card-title> -->
-
-                <v-rating
-                  class="text-right"
-                  v-model="rating"
-                  color="yellow darken-3"
-                  background-color="grey darken-1"
-                  empty-icon="$ratingFull"
-                  half-increments
-                  small
-                  readonly
-                ></v-rating>
-              </v-col>
-            </v-row>
-            <template v-slot:placeholder>
-              <v-row class="fill-height ma-0" align="center" justify="center">
-                <v-progress-circular
-                  indeterminate
-                  color="grey darken-1"
-                ></v-progress-circular>
-              </v-row>
-            </template>
-          </v-img>
-        </router-link>
-      </v-card>
-    </v-hover>
-  </v-col>
+  <router-link style="text-decoration: none" :to="'/movies/' + id">
+    <v-img :src="image" :height="height" :width="width">
+      <v-row style="height: 100%">
+        <v-col class="d-flex flex-column-reverse justify-space-between">
+          <v-rating
+            class="text-right"
+            v-model="rating"
+            color="yellow darken-3"
+            background-color="grey darken-1"
+            empty-icon="$ratingFull"
+            half-increments
+            small
+            readonly
+          ></v-rating>
+        </v-col>
+      </v-row>
+      <template v-slot:placeholder>
+        <v-row class="fill-height ma-0" align="center" justify="center">
+          <v-progress-circular
+            indeterminate
+            color="grey darken-1"
+          ></v-progress-circular>
+        </v-row>
+      </template>
+    </v-img>
+  </router-link>
 </template>
 <script>
 export default {
