@@ -1,33 +1,23 @@
-export const getMovies = (name, page = 1) => {
-  return fetch(
-    `${process.env.VUE_APP_API_URL}/search/movie?api_key=${process.env.VUE_APP_API_KEY}&query=${name}&page=${page}&include_adult=false`
-  )
-    .then((res) => {
-      return res.json();
-    })
-    .catch((err) => {
-      return err;
-    });
+import { factoryFetchRequest } from "./FactoryRequests.js";
+
+export const getMovies = async (name, page = 1) => {
+  return await factoryFetchRequest.createRequest(
+    "/search/movie",
+    "",
+    `api_key=${process.env.VUE_APP_API_KEY}&query=${name}&page=${page}&include_adult=false`
+  );
 };
-export const getMovie = (id) => {
-  return fetch(
-    `${process.env.VUE_APP_API_URL}/movie/${id}?api_key=${process.env.VUE_APP_API_KEY}`
-  )
-    .then((res) => {
-      return res.json();
-    })
-    .catch((err) => {
-      return err;
-    });
+export const getMovie = async (id) => {
+  return await factoryFetchRequest.createRequest(
+    "/movie",
+    `/${id}`,
+    `api_key=${process.env.VUE_APP_API_KEY}`
+  );
 };
-export const getUpcoming = (page = 1) => {
-  return fetch(
-    `${process.env.VUE_APP_API_URL}/movie/upcoming?api_key=${process.env.VUE_APP_API_KEY}&page=${page}`
-  )
-    .then((res) => {
-      return res.json();
-    })
-    .catch((err) => {
-      return err;
-    });
+export const getUpcoming = async (page = 1) => {
+  return await factoryFetchRequest.createRequest(
+    "/movie/upcoming",
+    "",
+    `api_key=${process.env.VUE_APP_API_KEY}&page=${page}`
+  );
 };
