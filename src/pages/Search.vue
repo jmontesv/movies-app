@@ -7,7 +7,7 @@
         :movies="movies"
         :info="info"
       />
-      <h3 v-else>Those movie don`t exists</h3>
+      <h3 class="text-center" v-else>Those movie don`t exists</h3>
     </template>
     <v-progress-circular
       v-else
@@ -18,7 +18,7 @@
 </template>
 <script>
 import ListMovies from "../components/ListMovies.vue";
-import { getMovies } from "../api/Index.js";
+import { getMovies } from "../api/Movies.js";
 export default {
   name: "Search",
   inject: ["$searches"],
@@ -36,7 +36,7 @@ export default {
     getMoviesByName(name, page = 1) {
       getMovies(name, page)
         .then((moviesFounded) => {
-          this.loading = false;
+          console.log(moviesFounded);
           this.movies = [...moviesFounded.results];
           this.info["totalResults"] = moviesFounded.total_results;
           this.info["currentPage"] = moviesFounded.page;
@@ -45,6 +45,7 @@ export default {
             text: this.info["textToSearch"],
             page: this.info.currentPage,
           };
+          this.loading = false;
         })
         .catch((err) => {
           this.loading = false;
@@ -69,6 +70,7 @@ export default {
   },
   watch: {
     "$route.query.text": function(text) {
+      this.info["textToSearch"] = text;
       this.getMoviesByName(text);
     },
   },

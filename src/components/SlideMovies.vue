@@ -47,7 +47,7 @@
 </template>
 <script>
 import MovieItem from "../components/MovieItem.vue";
-import { getUpcoming } from "../api/Index.js";
+import { getUpcoming } from "../api/Movies.js";
 export default {
   data() {
     return {

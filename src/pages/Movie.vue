@@ -52,7 +52,7 @@
             <v-col cols="12">
               <div class="mb-4">
                 <v-chip
-                  class="mr-4"
+                  class="mr-4 mb-4"
                   v-for="{ id, name } in genres"
                   :key="id"
                   color="green"
@@ -79,7 +79,7 @@
   </div>
 </template>
 <script>
-import { getMovie } from "../api/Index";
+import { getMovie } from "../api/Movies";
 export default {
   name: "movie",
   data() {
