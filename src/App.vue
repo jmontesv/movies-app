@@ -16,7 +16,7 @@
         </template>
       </v-switch>
     </v-app-bar>
-    <v-main>
+    <v-main style="min-height: 100vh">
       <InputSearch />
       <transition name="fade" mode="out-in">
         <router-view></router-view>
@@ -33,7 +33,6 @@ export default {
   provide: {
     $searches,
   },
-  // TODO: Hacer que la vista de búsqueda mantenga el estado y que se actualice cuando haya una nueva busqueda.
   components: {
     InputSearch,
   },

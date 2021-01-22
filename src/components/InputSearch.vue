@@ -30,6 +30,7 @@
   </div>
 </template>
 <script>
+import { updateLastMovieSearch } from "../store/Searches.js";
 export default {
   inject: ["$searches"],
   data() {
@@ -45,10 +46,10 @@ export default {
   methods: {
     search() {
       if (this.$route.query.text !== this.nameMovie) {
-        this.$searches.lastMovieSearch = {
+        updateLastMovieSearch({
           text: "",
           page: null,
-        };
+        });
         this.$router.push("/search?text=" + this.nameMovie);
       }
     },

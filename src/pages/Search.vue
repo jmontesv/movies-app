@@ -9,16 +9,18 @@
       />
       <h3 class="text-center" v-else>Those movie don`t exists</h3>
     </template>
-    <v-progress-circular
-      v-else
-      indeterminate
-      color="grey darken-1"
-    ></v-progress-circular>
+    <div class="text-center" v-else>
+      <v-progress-circular
+        indeterminate
+        color="grey darken-1"
+      ></v-progress-circular>
+    </div>
   </div>
 </template>
 <script>
 import ListMovies from "../components/ListMovies.vue";
 import { getMovies } from "../api/Movies.js";
+import { updateLastMovieSearch } from "../store/Searches.js";
 export default {
   name: "Search",
   inject: ["$searches"],
@@ -36,15 +38,14 @@ export default {
     getMoviesByName(name, page = 1) {
       getMovies(name, page)
         .then((moviesFounded) => {
-          console.log(moviesFounded);
           this.movies = [...moviesFounded.results];
           this.info["totalResults"] = moviesFounded.total_results;
           this.info["currentPage"] = moviesFounded.page;
           this.info["pages"] = moviesFounded.total_pages;
-          this.$searches["lastMovieSearch"] = {
+          updateLastMovieSearch({
             text: this.info["textToSearch"],
             page: this.info.currentPage,
-          };
+          });
           this.loading = false;
         })
         .catch((err) => {

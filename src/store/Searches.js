@@ -6,5 +6,9 @@ const $searches = Vue.observable({
     page: null,
   },
 });
+const updateLastMovieSearch = (movieSearch) => {
+  $searches.lastMovieSearch = movieSearch;
+};
 
+export { updateLastMovieSearch };
 export default $searches;
